@@ -26,6 +26,7 @@ class Stripchat(Plugin):
         return _url_re.match(url)
 
     def _get_streams(self):
+        self.session.http.cookies.set("stripchat_com_sessionId", "YOUR_SESSION_ID")
         match = _url_re.match(self.url)
         username = match.group("username")
         api_call = "https://stripchat.com/api/front/v2/models/username/{0}/cam".format(username)
